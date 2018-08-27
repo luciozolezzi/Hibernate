@@ -7,9 +7,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MainController {
 
-	@RequestMapping(value="/inicio", method=RequestMethod.GET)
+	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String index()
 	{
 		return "inicio";
+	}
+	
+	@RequestMapping(value="/agregarAlumno")
+	public String addAlumn()
+	{
+		return "addAlumn";
 	}
 }
