@@ -1,0 +1,45 @@
+# Hibernate
+Proyectos de pruebas con Hibernet, Maven y demás.
+
+-- GUÍA DE REFERENCIA --
+
+HIBERNATE:
+
+@Entity -> Indica cuando una clase es una entidad presente en la base de datos. Una Entity es equivalente a una tabla en la base.
+
+@Table -> Sirve para indicar que una entidad es una tabla en la base. NO es necesaria. Utilizarla cuando se quiera especificar un nombre de tabla, ejemplo:
+					@Table(name = "NombreTabla")
+
+@Column -> Sirve para indicar que un atributo de la clase es una columna dentro de la tabla de esa entidad en la base de datos. NO es necesaria. Idem que Table, ejemplo:
+
+					@Column(name = "nombreColumna")
+
+@Id -> Indica que una atributo de la clase representa una Clave Primaria en la tabla de la base de datos.
+
+-Relaciones:
+
+  @OneToOne -> Indica una relación de uno a uno entre tablas.
+  @OneToMany -> Indica una relación de uno a muchos entre tablas. Si se quiere hacer bidireccionalidad agregar @ManyToOne en la clase que representa a la otra entidad en la relación.
+  @ManyToOne -> La inversa. Relación de muchos a uno.
+  @ManyToMany -> Relación de muchos a muchos. Hibernate por sí solo es inteligente y crea una tabla intermedia para romper con el muchos-muchos y generar dos relaciones uno-muchos. Se puede especificar que no, pero eso es otra cosa.
+
+  ¿Cómo es? Lo que esta a la izquierda del "To" es la clase en la que se está agregando la annotation. Lo que está a la derecha es la clase con la que queremos relacionarnos.
+
+  Si hablamos de un OneToMany o un ManyToMany (es decir, donde es una relación hacia muchos) debería haber una lista Java como atributo en la clase de la que partimos. 
+  	Ejemplo si un Alumno tiene muchas materias a las que se inscribió:
+  	 @OneToMany
+  	 private List<Materia> materias;
+
+  Y si la relación es hacia uno (ToOne), tendremos simplemente un objeto de ese atributo.
+  	 @OneToOne
+  	 private Materia materia;
+
+ No es necesaria la bidireccionalidad. La materia no necesita tener al alumno como atributo, ni una lista de alumnos, los cuales estén inscriptos en ella. Simplemente el Alumno sería el dueño de la relación. y EN GENERAL, el dueño de la relación es el único que tiene a la otra entidad como atributo.
+
+ A la relación le podemos agregar la Cascada:
+
+ @OneToMany(cascade = CascadeType.Tipo) 
+
+ Si ponemos ALL -> En todo caso habrá cascada, es decir si hacemos alguna operación Hibernate se encargará de trabajar con las entidades asociadas en esa operación. Por ejemplo, si persistimos un Alumno que tiene materias, Hibernate agregará a la base tanto el alumno como sus materias, y no tendremos que indicarle que persista una por una las materias. Lo mismo pasará al borrar un registro, se borrará todo registro que tenga clave foránea asociada. Si borramos un alumno, se borran todas las materias que tiene (y así ningún otro alumno la podrá agregar para sí..). Entonces no siempre es convieniente, a discresión..
+
+ 
