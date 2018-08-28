@@ -1,0 +1,7 @@
+gonza\integracionWeb\model\Alumno.class
+gonza\integracionWeb\services\ManagerService.class
+gonza\integracionWeb\services\AlumnoService.class
+gonza\integracionWeb\controllers\AlumnoController.class
+gonza\integracionWeb\model\Facultad.class
+gonza\integracionWeb\controllers\MainController.class
+gonza\integracionWeb\model\Alumno2.class

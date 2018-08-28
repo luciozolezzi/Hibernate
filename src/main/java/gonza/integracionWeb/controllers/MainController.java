@@ -6,20 +6,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MainController {
-
+	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String index()
 	{
 		return "inicio";
 	}
 	
-	@RequestMapping(value="/registrarAlumno")
+	@RequestMapping(value="/alumnos/registrarAlumno", method=RequestMethod.GET)
 	public String registerStudent()
 	{
-		return "registerStudent";
+		return "registrarAlumno";
 	}
 	
-	@RequestMapping(value="/verAlumnos")
+	@RequestMapping(value="/alumnos/verAlumnos", method=RequestMethod.GET)
 	public String viewStudents()
 	{
 		return "viewStudents";

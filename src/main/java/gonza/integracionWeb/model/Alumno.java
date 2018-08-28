@@ -1,43 +1,27 @@
 package gonza.integracionWeb.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import org.springframework.stereotype.Component;
 
-
-@Entity
-@Table(name = "ALUMNOS")
+@Component
 public class Alumno {
 
-	@Id
-	@GeneratedValue
-	@Column
-	private int id_Alumno;
-	
-	@Column(name = "LEGAJO")
-	private int legajo;
-	
-	@Column(name = "NOMBRE")
 	private String nombre;
-
-	@Column(name = "APELLIDO")
 	private String apellido;
-	
-	@OneToOne
-	@Column(name = "REGIONAL")
-	private Facultad regional;
+	private int legajo;
+	private String regional;
 
-	public Alumno() {}
+	public Alumno() {
+		
+		System.out.println("No bardees Gonza");
+	}
 	
-	public Alumno(int legajo, String nombre, String apellido, Facultad regional) {
+	public Alumno(int legajo, String nombre, String apellido, String regional) {
 		this.legajo = legajo;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.regional = regional;
 	}
+
 
 	public int getLegajo() {
 		return legajo;
@@ -63,29 +47,13 @@ public class Alumno {
 		this.apellido = apellido;
 	}	
 	
-	public void setRegional(Facultad regional) {
+	public void setRegional(String regional) {
 		this.regional = regional;
 	}
 	
-	public Facultad getRegional() {
+	public String getRegional() {
 		return regional;
 	}
-
-	public void setId_Alumno(int id_Alumno) {
-		this.id_Alumno = id_Alumno;
-	}
-	
-	public int getId_Alumno() {
-		return id_Alumno;
-	}
-
-	@Override
-	public String toString() {
-		return "Alumno [id_Alumno=" + id_Alumno + ", legajo=" + legajo + ", nombre=" + nombre + ", apellido=" + apellido
-				+ ", regional=" + regional.getLugar() + "]";
-	}
-	
-	
 	
 }
 
