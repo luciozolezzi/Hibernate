@@ -2,6 +2,7 @@ package gonza.integracionWeb.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -12,6 +13,10 @@ import javax.persistence.Table;
 public class Alumno {
 
 	@Id
+	@GeneratedValue
+	@Column
+	private int id_Alumno;
+	
 	@Column(name = "LEGAJO")
 	private int legajo;
 	
@@ -66,11 +71,21 @@ public class Alumno {
 		return regional;
 	}
 
+	public void setId_Alumno(int id_Alumno) {
+		this.id_Alumno = id_Alumno;
+	}
+	
+	public int getId_Alumno() {
+		return id_Alumno;
+	}
+
 	@Override
 	public String toString() {
-		return "Alumno [legajo=" + legajo + ", nombre=" + nombre + ", apellido=" + apellido + ", regional=" + regional.getLugar()
-				+ "]";
+		return "Alumno [id_Alumno=" + id_Alumno + ", legajo=" + legajo + ", nombre=" + nombre + ", apellido=" + apellido
+				+ ", regional=" + regional.getLugar() + "]";
 	}
+	
+	
 	
 }
 

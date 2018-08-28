@@ -13,9 +13,15 @@ public class MainController {
 		return "inicio";
 	}
 	
-	@RequestMapping(value="/agregarAlumno")
-	public String addAlumn()
+	@RequestMapping(value="/registrarAlumno")
+	public String registerStudent()
 	{
-		return "addAlumn";
+		return "registerStudent";
+	}
+	
+	@RequestMapping(value="/verAlumnos")
+	public String viewStudents()
+	{
+		return "viewStudents";
 	}
 }
