@@ -1,19 +1,32 @@
 package gonza.integracionWeb.model;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-@Component
+@Entity
 public class Alumno {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="ID_ALUMNO")
+	private Long id;
+	
+	@Column(name="NOMBRE_ALUMNO")
 	private String nombre;
+	
+	@Column(name="APELLIDO_ALUMNO")
 	private String apellido;
+	
+	@Column(name="LEGAJO_ALUMNO")
 	private int legajo;
+	
+	@Column(name="ID_REGIONAL")
 	private String regional;
 
-	public Alumno() {
-		
-		System.out.println("No bardees Gonza");
-	}
+	public Alumno() {}
 	
 	public Alumno(int legajo, String nombre, String apellido, String regional) {
 		this.legajo = legajo;
@@ -54,6 +67,13 @@ public class Alumno {
 	public String getRegional() {
 		return regional;
 	}
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 }
 

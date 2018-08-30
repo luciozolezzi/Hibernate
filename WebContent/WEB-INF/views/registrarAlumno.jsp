@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
@@ -12,30 +12,33 @@
 
 <body>
 	<h3>Ingresar los datos del alumno:</h3>
-  
-	<form:form method="POST" action="/alumnos/register">
 
-		<form:label path="nombre">
-			<spring:message text="Nombre" />
-		</form:label>
-		<form:input path="nombre" />
-		
-		<form:label path="apellido">
-			<spring:message text="Apellido" />
-		</form:label>
-		<form:input path="apellido" />
-		
-		<form:label path="legajo">
-			<spring:message text="Legajo" />
-		</form:label>
-		<form:input path="legajo" />
-		
-		<form:label path="regional">
-			<spring:message text="Regional" />
-		</form:label>
-		<form:input path="regional" />
-		
-		
+
+	<form:form modelAttribute="alumno" action="register" method="post">
+		<table>
+			<tr>
+				<td>Nombre:</td>
+				<td><form:input id="nombre" path="nombre" /></td>
+			</tr>
+			<tr>
+			<tr>
+				<td>Apellido:</td>
+				<td><form:input id="apellido" path="apellido" /></td>
+			</tr>
+			<tr>
+			<tr>
+				<td>Legajo:</td>
+				<td><form:input id="legajo" path="legajo" /></td>
+			</tr>
+			<tr>
+			<tr>
+				<td>Regional:</td>
+				<td><form:input id="regional" path="regional" /></td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Aceptar"></td>
+			</tr>
+		</table>
 	</form:form>
 </body>
 </html>

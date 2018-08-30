@@ -14,11 +14,14 @@ public class AlumnoController {
 	private ManagerService service = new AlumnoService();
 	
 	@RequestMapping(value="/alumnos/register", method=RequestMethod.POST)
-	public String addAlumno(@ModelAttribute("alumno") Alumno a)
+	public String addAlumno(@ModelAttribute Alumno a)
 	{
-		System.out.println(a.getNombre() + a.getApellido());
-		//service.addEntity(a);
-		return "registroExitoso";
-		
+		System.out.println("NOMBRE = " + a.getNombre());
+		System.out.println("APELLIDO = " + a.getApellido());
+		System.out.println("LEGAJO = " + a.getLegajo());
+		System.out.println("REGIONAL = " + a.getRegional());
+		service.addEntity(a);
+		return "registroExitoso";	
 	}
+	
 }
